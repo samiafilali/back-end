@@ -29,4 +29,9 @@ public class RefrigerateurController {
     public Refrigerateur saveRefrigerateur(@RequestBody Refrigerateur refrigerateur) {
         return refrigerateurService.saveRefrigerateur(refrigerateur);
     }
+
+    @GetMapping("/refrigerateurs/device/{deviceId}")
+    public Optional<Refrigerateur> getRefrigerateurByDeviceId(@PathVariable String deviceId) {
+        return refrigerateurService.getRefrigerateurByDeviceId(deviceId);
+    }
 }

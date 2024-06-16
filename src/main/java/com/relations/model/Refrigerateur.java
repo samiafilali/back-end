@@ -26,8 +26,18 @@ public class Refrigerateur  extends BaseEntity{
 	@Column(unique = true)
 	private String label;
 	
+	@Column(unique = true)
+    private String deviceId;
+	
 	String emplacement;
-	private int temperatureMax, temperatureMin;
+	@Builder.Default
+	private int temperatureMax = 8 ;
+	@Builder.Default
+     private int temperatureMin = 4;
+	@Builder.Default
+     private int humiditeMax = 60;
+	@Builder.Default
+     private int humiditéMin = 40;
 	@ManyToMany(mappedBy = "refrigerateurs")
 	@JsonIgnoreProperties("refrigerateurs")
 	private List<Alerte> alertes;

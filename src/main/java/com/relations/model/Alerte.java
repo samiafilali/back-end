@@ -32,6 +32,10 @@ public class Alerte extends BaseEntity {
 	@JsonIgnoreProperties("alertes")
 
 	List<Refrigerateur> refrigerateurs;
+	public void setCapteurId(Integer integer) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 }

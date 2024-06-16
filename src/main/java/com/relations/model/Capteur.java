@@ -28,7 +28,7 @@ public class Capteur  {
 	@Id
 	private int id;
 	
-	private float valeur;
+	private float Temperature,Humidite;
 	private String type;
 	@MapsId
 	@OneToOne
