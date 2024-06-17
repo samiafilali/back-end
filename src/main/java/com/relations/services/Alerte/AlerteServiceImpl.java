@@ -52,3 +52,4 @@ public class AlerteServiceImpl implements AlerteService {
         System.out.println("Alerte supprimée avec ID : " + id);
     }
 }
+

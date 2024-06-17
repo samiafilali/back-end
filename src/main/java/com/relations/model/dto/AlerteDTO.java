@@ -4,11 +4,16 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+
+import java.util.Date;
 import java.util.List;
 
 @Data
 public class AlerteDTO {
   private Long id;
+  private String refrigerateurLabel; 
+  private Date timestamp;
+  private String value;
 
   @Pattern(regexp = "^(TEMPERATURE|HUMIDITE)$", message = "Le type d'alerte doit être l'un des suivants : TEMPERATURE, HUMIDITE")
   private String type;

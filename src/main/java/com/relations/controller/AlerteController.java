@@ -6,6 +6,9 @@ import com.relations.services.Alerte.AlerteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -49,10 +52,26 @@ public class AlerteController {
 
         Alerte alerte = new Alerte();
         alerte.setType((String) alertData.get("variable"));
+        alerte.setValue((String) alertData.get("value"));
+        alerte.setRefrigerateurLabel((String) alertData.get("device_label"));
+        
+        // Parse the timestamp to a Date object
+        String timestampStr = (String) alertData.get("timestamp");
+        try {
+            Date timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z").parse(timestampStr);
+            alerte.setTimestamp(timestamp);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "Invalid timestamp format";
+        }
+        
         alerte.setStatus((String) alertData.get("status"));
-        alerte.setCapteurId((Integer) alertData.get("device_id"));
         alerteService.saveAlerte(alerte);
 
         return "Alerte reçue";
     }
 }
+
+
+
+
